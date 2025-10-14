@@ -2,16 +2,40 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Login from './login.jsx';
 import Homepage from './homepage.jsx';
+import SchemeVerification from './schverify.jsx';
 import './styles.css';
 
 function AppRoot() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentPage, setCurrentPage] = useState('login');
+  const [theme, setTheme] = useState('light');
 
-  if (isLoggedIn) {
-    return <Homepage />;
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  if (currentPage === 'login') {
+    return <Login onLoginSuccess={() => setCurrentPage('home')} />;
   }
 
-  return <Login onLoginSuccess={() => setIsLoggedIn(true)} />;
+  if (currentPage === 'schemeVerification') {
+    return (
+      <SchemeVerification
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  return (
+    <Homepage
+      onNavigate={setCurrentPage}
+      activeKey={currentPage}
+      theme={theme}
+      onToggleTheme={handleToggleTheme}
+    />
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

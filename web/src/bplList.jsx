@@ -113,7 +113,7 @@ function TopBar({ onToggleSidebar, isDarkMode, onToggleTheme, selectedLanguage, 
   );
 }
 
-export default function BplListPage({ onToggleSidebar }) {
+export default function BplListPage({ onToggleSidebar, theme = 'light', onToggleTheme = () => {} }) {
   const [year, setYear] = useState(() => {
     try {
       return localStorage.getItem('bplYear') || '2024';
@@ -123,7 +123,7 @@ export default function BplListPage({ onToggleSidebar }) {
   });
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [showLanguages, setShowLanguages] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = theme === 'dark';
   const [form, setForm] = useState({
     serial: '',
     village: '',
@@ -159,6 +159,12 @@ export default function BplListPage({ onToggleSidebar }) {
       document.body.classList.remove(className);
     }
   }, [isDarkMode]);
+
+  const handleToggleTheme = () => {
+    if (typeof onToggleTheme === 'function') {
+      onToggleTheme();
+    }
+  };
 
   const filteredMembers = useMemo(() => {
     return members.filter((m) => {
@@ -238,7 +244,7 @@ export default function BplListPage({ onToggleSidebar }) {
       <TopBar
         onToggleSidebar={onToggleSidebar}
         isDarkMode={isDarkMode}
-        onToggleTheme={() => setIsDarkMode((p) => !p)}
+        onToggleTheme={handleToggleTheme}
         selectedLanguage={selectedLanguage}
         showLanguages={showLanguages}
         setShowLanguages={setShowLanguages}

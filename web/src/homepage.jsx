@@ -3,9 +3,9 @@ import BplListPage from './bplList.jsx';
 import './homepage.css';
 
 const navLinks = [
-  { label: 'Home', icon: 'home', active: true },
-  { label: 'BPL List', icon: 'list' },
-  { label: 'Scheme Verification', icon: 'shield' },
+  { label: 'Dashboard', icon: 'home', key: 'home' },
+  { label: 'BPL List', icon: 'list', key: 'bplList' },
+  { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
   { label: 'Approve Beneficiaries', icon: 'check' },
   { label: 'Scheme Listing', icon: 'layers' },
   { label: 'Beneficiary Page', icon: 'users' },
@@ -213,12 +213,12 @@ const CardIcon = ({ name, color }) => {
   }
 };
 
-export default function Homepage() {
+export default function Homepage({ onNavigate = () => {}, activeKey = 'home', theme = 'light', onToggleTheme = () => {} }) {
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [showLanguages, setShowLanguages] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [activePage, setActivePage] = useState('Home');
+
+  const isDarkMode = theme === 'dark';
 
   const themeIcon = isDarkMode ? 'moon' : 'sun';
   const themeAriaLabel = isDarkMode ? 'Switch to light theme' : 'Switch to dark theme';
@@ -227,10 +227,6 @@ export default function Homepage() {
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
     setShowLanguages(false);
-  };
-
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
   };
 
   useEffect(() => {
@@ -246,24 +242,33 @@ export default function Homepage() {
     <div className={homepageClassName}>
       <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`} aria-label="Primary navigation">
         <div className="brand">GramSeva</div>
-        <nav>
-          <ul>
-            {navLinks.map((link) => (
-              <li key={link.label} className={activePage === link.label ? 'active' : ''}>
-                <button
-                  type="button"
-                  className="nav-button"
-                  onClick={() => setActivePage(link.label)}
-                >
-                  <span className="nav-icon">
-                    <NavIcon name={link.icon} />
-                  </span>
-                  <span className="nav-label">{link.label}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="sidebar-scroll">
+          <nav>
+            <ul>
+              {navLinks.map((link) => {
+                const isActive = Boolean(link.key) && link.key === activeKey;
+                return (
+                  <li key={link.label} className={isActive ? 'active' : ''}>
+                    <button
+                      type="button"
+                      className="nav-button"
+                      onClick={() => {
+                        if (link.key) {
+                          onNavigate(link.key);
+                        }
+                      }}
+                    >
+                      <span className="nav-icon">
+                        <NavIcon name={link.icon} />
+                      </span>
+                      <span className="nav-label">{link.label}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
         <div className="sidebar-footer">
           <button type="button" className="nav-button">
             <span className="nav-icon">
@@ -294,7 +299,7 @@ export default function Homepage() {
         aria-hidden="true"
         onClick={() => setIsSidebarOpen(false)}
       />
-      {activePage === 'Home' && (
+      {activeKey === 'home' && (
       <main className="content" aria-label="Dashboard content">
         <header className="content-header">
           <div className="header-top">
@@ -315,7 +320,7 @@ export default function Homepage() {
               <button
                 type="button"
                 className="icon-button theme-toggle"
-                onClick={toggleTheme}
+                onClick={onToggleTheme}
                 aria-label={themeAriaLabel}
               >
                 <UtilityIcon name={themeIcon} />
@@ -412,9 +417,13 @@ export default function Homepage() {
         </section>
       </main>
       )}
-      {activePage === 'BPL List' && (
+      {activeKey === 'bplList' && (
         <div className="content" aria-label="BPL list content" style={{ padding: 0 }}>
-          <BplListPage onToggleSidebar={() => setIsSidebarOpen((p) => !p)} />
+          <BplListPage
+            onToggleSidebar={() => setIsSidebarOpen((p) => !p)}
+            theme={theme}
+            onToggleTheme={onToggleTheme}
+          />
         </div>
       )}
     </div>
