@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'BPL List', icon: 'list', key: 'bplList' },
   { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
   { label: 'Approve Beneficiaries', icon: 'check' },
-  { label: 'Scheme Listing', icon: 'layers' },
+  { label: 'Scheme Listing', icon: 'layers', key: 'schemeListing' },
   { label: 'Beneficiary Page', icon: 'users' },
   { label: 'Beneficiary Checker', icon: 'search-user' },
   { label: 'Fund Tracking', icon: 'chart' },
