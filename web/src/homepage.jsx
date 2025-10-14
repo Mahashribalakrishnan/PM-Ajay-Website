@@ -11,7 +11,7 @@ const navLinks = [
   { label: 'Beneficiary Page', icon: 'users' },
   { label: 'Beneficiary Checker', icon: 'search-user' },
   { label: 'Fund Tracking', icon: 'chart' },
-  { label: 'Project Suggestions', icon: 'lightbulb' },
+  { label: 'Project Suggestions', icon: 'lightbulb', key: 'projectSuggestions' },
   { label: 'Geo Map View', icon: 'map' },
 ];
 
