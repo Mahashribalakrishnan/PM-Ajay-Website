@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import BplListPage from './bplList.jsx';
 import './homepage.css';
 
 const navLinks = [
@@ -217,6 +218,7 @@ export default function Homepage() {
   const [showLanguages, setShowLanguages] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [activePage, setActivePage] = useState('Home');
 
   const themeIcon = isDarkMode ? 'moon' : 'sun';
   const themeAriaLabel = isDarkMode ? 'Switch to light theme' : 'Switch to dark theme';
@@ -247,8 +249,12 @@ export default function Homepage() {
         <nav>
           <ul>
             {navLinks.map((link) => (
-              <li key={link.label} className={link.active ? 'active' : ''}>
-                <button type="button" className="nav-button">
+              <li key={link.label} className={activePage === link.label ? 'active' : ''}>
+                <button
+                  type="button"
+                  className="nav-button"
+                  onClick={() => setActivePage(link.label)}
+                >
                   <span className="nav-icon">
                     <NavIcon name={link.icon} />
                   </span>
@@ -288,6 +294,7 @@ export default function Homepage() {
         aria-hidden="true"
         onClick={() => setIsSidebarOpen(false)}
       />
+      {activePage === 'Home' && (
       <main className="content" aria-label="Dashboard content">
         <header className="content-header">
           <div className="header-top">
@@ -404,6 +411,12 @@ export default function Homepage() {
           </ul>
         </section>
       </main>
+      )}
+      {activePage === 'BPL List' && (
+        <div className="content" aria-label="BPL list content" style={{ padding: 0 }}>
+          <BplListPage onToggleSidebar={() => setIsSidebarOpen((p) => !p)} />
+        </div>
+      )}
     </div>
   );
 }
