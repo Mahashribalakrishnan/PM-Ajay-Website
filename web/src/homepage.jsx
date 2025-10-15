@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import BplListPage from './bplList.jsx';
+import BeneficiaryPage from './beneficiary.jsx';
 import './homepage.css';
 
 const navLinks = [
@@ -8,8 +9,8 @@ const navLinks = [
   { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
   { label: 'Approve Beneficiaries', icon: 'check' },
   { label: 'Scheme Listing', icon: 'layers' },
-  { label: 'Beneficiary Page', icon: 'users' },
-  { label: 'Beneficiary Checker', icon: 'search-user' },
+  { label: 'Beneficiary Page', icon: 'users', key: 'beneficiary' },
+  { label: 'Beneficiary Checker', icon: 'search-user', key: 'beneficiarychecker' },
   { label: 'Fund Tracking', icon: 'chart' },
   { label: 'Project Suggestions', icon: 'lightbulb' },
   { label: 'Geo Map View', icon: 'map' },
@@ -421,6 +422,16 @@ export default function Homepage({ onNavigate = () => {}, activeKey = 'home', th
         <div className="content" aria-label="BPL list content" style={{ padding: 0 }}>
           <BplListPage
             onToggleSidebar={() => setIsSidebarOpen((p) => !p)}
+            theme={theme}
+            onToggleTheme={onToggleTheme}
+          />
+        </div>
+      )}
+      {activeKey === 'beneficiary' && (
+        <div className="content" aria-label="Beneficiary page content" style={{ padding: 0 }}>
+          <BeneficiaryPage
+            onNavigate={onNavigate}
+            activeKey={activeKey}
             theme={theme}
             onToggleTheme={onToggleTheme}
           />

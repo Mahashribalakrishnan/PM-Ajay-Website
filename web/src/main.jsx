@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import Login from './login.jsx';
 import Homepage from './homepage.jsx';
 import SchemeVerification from './schverify.jsx';
+import BeneficiaryPage from './beneficiary.jsx';
+import BeneficiaryChecker from './beneficiarychecker.jsx';
 import './styles.css';
 
 function AppRoot() {
@@ -20,6 +22,28 @@ function AppRoot() {
   if (currentPage === 'schemeVerification') {
     return (
       <SchemeVerification
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === 'beneficiary') {
+    return (
+      <BeneficiaryPage
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === 'beneficiarychecker') {
+    return (
+      <BeneficiaryChecker
         onNavigate={setCurrentPage}
         activeKey={currentPage}
         theme={theme}
