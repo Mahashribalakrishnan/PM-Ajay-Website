@@ -245,7 +245,6 @@ const BeneficiaryPage = ({ onNavigate = () => {}, activeKey = 'beneficiary', the
     { label: 'Fund Tracking', icon: 'chart', key: 'fundTracking' },
     { label: 'Project Suggestions', icon: 'lightbulb', key: 'projectSuggestions' },
     { label: 'Geo Map View', icon: 'map', key: 'geoMapView' },
-    { label: 'Scheme Details', icon: 'file-text', key: 'schemeDetails' },
   ];
 
   const languages = ['English', 'தமிழ்', 'हिंदी', 'తెలుగు', 'मराठी'];

@@ -46,32 +46,21 @@ function UtilityIcon({ name }) {
 function TopBar({ onToggleSidebar, isDarkMode, onToggleTheme, selectedLanguage, showLanguages, setShowLanguages, onSelectLanguage, year, onYearChange }) {
   return (
     <header className="bpl-topbar">
-      <div className="left">
-        <button type="button" className="hamburger" onClick={onToggleSidebar} aria-label="Toggle sidebar">
-          <span />
-          <span />
-          <span />
-        </button>
-        <div className="app-brand">
-          <div className="brand-text">
-            <h1>BPL Boarding Members</h1>
-            <span>Manage and view the list of Below Poverty Line families.</span>
+      <div className="top-row">
+        <div className="left">
+          <button type="button" className="hamburger" onClick={onToggleSidebar} aria-label="Toggle sidebar">
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className="app-brand">
+            <div className="brand-text">
+              <h1>BPL Boarding Members</h1>
+              <span>Manage and view the list of Below Poverty Line families.</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="right">
-        <div className="year-and-actions">
-          <select className="year-select" value={year} onChange={(e) => onYearChange(e.target.value)} aria-label="Select Year">
-            <option value="2024">Year 2024</option>
-            <option value="2025">Year 2025</option>
-          </select>
-          <button type="button" className="btn primary">+ New List</button>
-        </div>
         <div className="toolbar">
-          <button type="button" className="icon-button notification" aria-label="Notifications">
-            <UtilityIcon name="bell" />
-            <span className="notification-dot" />
-          </button>
           <button
             type="button"
             className="icon-button theme-toggle"
@@ -106,7 +95,15 @@ function TopBar({ onToggleSidebar, isDarkMode, onToggleTheme, selectedLanguage, 
               </ul>
             )}
           </div>
-          <div className="avatar" aria-hidden="true">HS</div>
+        </div>
+      </div>
+      <div className="bpl-secondary-actions">
+        <div className="year-actions-group">
+          <select className="year-select" value={year} onChange={(e) => onYearChange(e.target.value)} aria-label="Select Year">
+            <option value="2024">Year 2024</option>
+            <option value="2025">Year 2025</option>
+          </select>
+          <button type="button" className="btn primary">+ New List</button>
         </div>
       </div>
     </header>

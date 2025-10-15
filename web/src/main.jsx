@@ -7,6 +7,7 @@ import BeneficiaryPage from './beneficiary.jsx';
 import BeneficiaryChecker from './beneficiarychecker.jsx';
 import SchemeListing from './schlist.jsx';
 import ProjectSuggestions from './project.jsx';
+import FundTracking from './funds.jsx';
 import SchemeDetails from './schdetails.jsx';
 import BeneficiaryApproval from './beneficiaryapproval.jsx';
 import './styles.css';
@@ -90,6 +91,17 @@ function AppRoot() {
   if (currentPage === 'projectSuggestions') {
     return (
       <ProjectSuggestions
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === 'fundTracking') {
+    return (
+      <FundTracking
         onNavigate={setCurrentPage}
         activeKey={currentPage}
         theme={theme}
