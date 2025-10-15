@@ -8,6 +8,7 @@ import BeneficiaryChecker from './beneficiarychecker.jsx';
 import SchemeListing from './schlist.jsx';
 import ProjectSuggestions from './project.jsx';
 import SchemeDetails from './schdetails.jsx';
+import BeneficiaryApproval from './beneficiaryapproval.jsx';
 import './styles.css';
 
 function AppRoot() {
@@ -75,6 +76,17 @@ function AppRoot() {
     );
   }
 
+  if (currentPage === 'approveBeneficiaries') {
+    return (
+      <BeneficiaryApproval
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+  
   if (currentPage === 'projectSuggestions') {
     return (
       <ProjectSuggestions
