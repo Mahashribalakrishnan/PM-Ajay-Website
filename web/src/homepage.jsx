@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
 import BplListPage from './bplList.jsx';
 import BeneficiaryPage from './beneficiary.jsx';
+import BeneficiaryChecker from './beneficiarychecker.jsx';
 import './homepage.css';
 
 const navLinks = [
   { label: 'Dashboard', icon: 'home', key: 'home' },
   { label: 'BPL List', icon: 'list', key: 'bplList' },
   { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
-  { label: 'Approve Beneficiaries', icon: 'check' },
-  { label: 'Scheme Listing', icon: 'layers' },
+  { label: 'Approve Beneficiaries', icon: 'check', key: 'approveBeneficiaries' },
+  { label: 'Scheme Listing', icon: 'layers', key: 'schemeListing' },
   { label: 'Beneficiary Page', icon: 'users', key: 'beneficiary' },
   { label: 'Beneficiary Checker', icon: 'search-user', key: 'beneficiarychecker' },
-  { label: 'Fund Tracking', icon: 'chart' },
-  { label: 'Project Suggestions', icon: 'lightbulb' },
-  { label: 'Geo Map View', icon: 'map' },
+  { label: 'Fund Tracking', icon: 'chart', key: 'fundTracking' },
+  { label: 'Project Suggestions', icon: 'lightbulb', key: 'projectSuggestions' },
+  { label: 'Geo Map View', icon: 'map', key: 'geoMapView' },
 ];
 
 const metricCards = [
@@ -430,6 +431,16 @@ export default function Homepage({ onNavigate = () => {}, activeKey = 'home', th
       {activeKey === 'beneficiary' && (
         <div className="content" aria-label="Beneficiary page content" style={{ padding: 0 }}>
           <BeneficiaryPage
+            onNavigate={onNavigate}
+            activeKey={activeKey}
+            theme={theme}
+            onToggleTheme={onToggleTheme}
+          />
+        </div>
+      )}
+      {activeKey === 'beneficiarychecker' && (
+        <div className="content" aria-label="Beneficiary checker content" style={{ padding: 0 }}>
+          <BeneficiaryChecker
             onNavigate={onNavigate}
             activeKey={activeKey}
             theme={theme}

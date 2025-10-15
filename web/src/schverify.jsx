@@ -5,13 +5,13 @@ const navLinks = [
   { label: 'Dashboard', icon: 'home', key: 'home' },
   { label: 'BPL List', icon: 'list', key: 'bplList' },
   { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
-  { label: 'Approve Beneficiaries', icon: 'check' },
-  { label: 'Scheme Listing', icon: 'layers' },
+  { label: 'Approve Beneficiaries', icon: 'check', key: 'approveBeneficiaries' },
+  { label: 'Scheme Listing', icon: 'layers', key: 'schemeListing' },
   { label: 'Beneficiary Page', icon: 'users', key: 'beneficiary' },
   { label: 'Beneficiary Checker', icon: 'search-user', key: 'beneficiarychecker' },
-  { label: 'Fund Tracking', icon: 'chart' },
-  { label: 'Project Suggestions', icon: 'lightbulb' },
-  { label: 'Geo Map View', icon: 'map' },
+  { label: 'Fund Tracking', icon: 'chart', key: 'fundTracking' },
+  { label: 'Project Suggestions', icon: 'lightbulb', key: 'projectSuggestions' },
+  { label: 'Geo Map View', icon: 'map', key: 'geoMapView' },
 ];
 
 const languages = ['English', 'தமிழ்', 'हिंदी', 'తెలుగు', 'मराठी'];

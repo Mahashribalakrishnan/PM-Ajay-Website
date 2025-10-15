@@ -6,13 +6,14 @@ const navLinks = [
   { label: 'Dashboard', icon: 'home', key: 'home' },
   { label: 'BPL List', icon: 'list', key: 'bplList' },
   { label: 'Scheme Verification', icon: 'shield', key: 'schemeVerification' },
-  { label: 'Approve Beneficiaries', icon: 'check' },
-  { label: 'Scheme Listing', icon: 'layers' },
+  { label: 'Approve Beneficiaries', icon: 'check', key: 'approveBeneficiaries' },
+  { label: 'Scheme Listing', icon: 'layers', key: 'schemeListing' },
   { label: 'Beneficiary Page', icon: 'users', key: 'beneficiary' },
   { label: 'Beneficiary Checker', icon: 'search-user', key: 'beneficiarychecker' },
-  { label: 'Fund Tracking', icon: 'chart' },
-  { label: 'Project Suggestions', icon: 'lightbulb' },
-  { label: 'Geo Map View', icon: 'map' },
+  { label: 'Fund Tracking', icon: 'chart', key: 'fundTracking' },
+  { label: 'Project Suggestions', icon: 'lightbulb', key: 'projectSuggestions' },
+  { label: 'Geo Map View', icon: 'map', key: 'geoMapView' },
+  { label: 'Scheme Details', icon: 'file-text', key: 'schemeDetails' },
 ];
 
 const BeneficiaryChecker = ({ onNavigate = () => {}, activeKey = 'beneficiarychecker', theme = 'light', onToggleTheme = () => {} }) => {
@@ -209,6 +210,13 @@ const BeneficiaryChecker = ({ onNavigate = () => {}, activeKey = 'beneficiaryche
         return (
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m9 4.2 6-1.2v16.8l-6 1.2-6-1.2V3Z" />
+          </svg>
+        );
+      case 'file-text':
+        return (
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.4 3.6H7.2a2.4 2.4 0 0 0-2.4 2.4v12a2.4 2.4 0 0 0 2.4 2.4h9.6a2.4 2.4 0 0 0 2.4-2.4V8.4Zm2.4 14.4H7.2V6h6v3.6h3.6Z" />
+            <path d="M9.6 12h4.8v1.2H9.6Zm0 2.4h4.8v1.2H9.6Z" />
           </svg>
         );
       default:
