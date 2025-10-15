@@ -64,7 +64,7 @@ const kpis = [
   { id: 'progress', title: 'Average Progress', value: '75%', icon: 'chart' },
 ];
 
-const languages = ['English', 'தமிழ்', 'हिंदी', 'తెలుగు', 'मराठी'];
+const languages = ['English', 'தமிழ்', 'हिंदी', 'తెలుగు', 'మరాఠీ'];
 
 function NavIcon({ name }) {
   switch (name) {
@@ -426,7 +426,7 @@ export default function SchemeListing({ onNavigate = () => {}, activeKey = 'sche
                     <div className="scheme-progress-bar" style={{ width: `${scheme.progress}%` }} />
                   </div>
                 </div>
-                <button type="button" className="scheme-card-button">View Details</button>
+                <button type="button" className="scheme-card-button" onClick={() => onNavigate('schemeDetails')}>View Details</button>
               </article>
             ))}
           </div>

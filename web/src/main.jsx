@@ -5,6 +5,7 @@ import Homepage from './homepage.jsx';
 import SchemeVerification from './schverify.jsx';
 import SchemeListing from './schlist.jsx';
 import ProjectSuggestions from './project.jsx';
+import SchemeDetails from './schdetails.jsx';
 import './styles.css';
 
 function AppRoot() {
@@ -33,6 +34,17 @@ function AppRoot() {
   if (currentPage === 'schemeListing') {
     return (
       <SchemeListing
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === 'schemeDetails') {
+    return (
+      <SchemeDetails
         onNavigate={setCurrentPage}
         activeKey={currentPage}
         theme={theme}
