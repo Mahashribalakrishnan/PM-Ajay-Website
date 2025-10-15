@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import './beneficiarychecker.css';
-import './homepage.css';
 
 const navLinks = [
   { label: 'Dashboard', icon: 'home', key: 'home' },
@@ -247,7 +246,7 @@ const BeneficiaryChecker = ({ onNavigate = () => {}, activeKey = 'beneficiaryche
   );
 
   return (
-    <div className={`homepage ${isDarkMode ? 'dark' : 'light'} ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+    <div className={`beneficiary-checker ${isDarkMode ? 'dark' : 'light'} ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
       {/* Sidebar */}
       <aside className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`} aria-label="Primary navigation">
         <div className="brand">GramSeva</div>

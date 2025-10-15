@@ -10,7 +10,9 @@ import ProjectSuggestions from './project.jsx';
 import FundTracking from './funds.jsx';
 import SchemeDetails from './schdetails.jsx';
 import BeneficiaryApproval from './beneficiaryapproval.jsx';
+import GeoMap from './geomap.jsx';
 import './styles.css';
+
 
 function AppRoot() {
   const [currentPage, setCurrentPage] = useState('login');
@@ -102,6 +104,17 @@ function AppRoot() {
   if (currentPage === 'fundTracking') {
     return (
       <FundTracking
+        onNavigate={setCurrentPage}
+        activeKey={currentPage}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+    );
+  }
+
+  if (currentPage === 'geoMapView') {
+    return (
+      <GeoMap
         onNavigate={setCurrentPage}
         activeKey={currentPage}
         theme={theme}
